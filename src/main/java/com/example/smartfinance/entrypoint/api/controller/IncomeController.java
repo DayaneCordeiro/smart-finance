@@ -14,10 +14,14 @@ import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 import static io.swagger.v3.oas.annotations.enums.ParameterIn.HEADER;
 
 @Tag(name = "incomes", description = "The income API")
+@RequestMapping("/v1/incomes")
 public interface IncomeController {
 
     @Operation(summary = "Incomes")
@@ -41,8 +45,8 @@ public interface IncomeController {
         )
     })
 
-    @GetMapping("/v1/incomes")
-    IncomeOutputDTO getIncomes(
+    @GetMapping
+    List<IncomeOutputDTO> getIncomes(
         @RequestHeader(value = "consumer-id") final String consumerId,
         @Valid @RequestBody final IncomeInputDTO incomeInputDTO
     );
