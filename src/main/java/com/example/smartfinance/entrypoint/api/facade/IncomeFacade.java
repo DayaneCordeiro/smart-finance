@@ -1,6 +1,6 @@
 package com.example.smartfinance.entrypoint.api.facade;
 
-import com.example.smartfinance.core.usecase.IncomeUseCase;
+import com.example.smartfinance.core.usecase.GetIncomeUseCase;
 import com.example.smartfinance.entrypoint.api.dto.IncomeInputDTO;
 import com.example.smartfinance.entrypoint.api.dto.IncomeOutputDTO;
 import com.example.smartfinance.entrypoint.api.mapper.IncomeMapper;
@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 public class IncomeFacade {
 
-    private final IncomeUseCase incomeUseCase;
+    private final GetIncomeUseCase incomeUseCase;
     private final IncomeMapper incomeMapper;
 
     public List<IncomeOutputDTO> getIncomes(String consumerId, IncomeInputDTO incomeInputDTO) {
