@@ -7,8 +7,6 @@ import com.example.smartfinance.entrypoint.api.facade.IncomeFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 @RequiredArgsConstructor
 public class IncomeControllerImpl implements IncomeController {
@@ -21,7 +19,7 @@ public class IncomeControllerImpl implements IncomeController {
     }
 
     @Override
-    public List<IncomeOutputDTO> get(String consumerId, IncomeInputDTO incomeInputDTO) {
-        return null;
+    public IncomeOutputDTO get(String consumerId, String id) {
+        return incomeFacade.get(consumerId, id);
     }
 }

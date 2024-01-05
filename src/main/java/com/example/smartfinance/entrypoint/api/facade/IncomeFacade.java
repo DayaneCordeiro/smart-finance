@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class IncomeFacade {
 
-//    private final GetIncomeUseCase getIncomeUseCase;
+    private final GetIncomeUseCase getIncomeUseCase;
     private final IncomeCreateUseCase incomeCreateUseCase;
     private final IncomeMapper incomeMapper;
 
@@ -25,9 +25,9 @@ public class IncomeFacade {
         return incomeMapper.toDTO(incomeCreateUseCase.create(incomeDomain));
     }
 
-//    public List<IncomeOutputDTO> getIncomes(String consumerId, IncomeInputDTO incomeInputDTO) {
-//        final var incomeDomain = incomeMapper.from(incomeInputDTO);
-//
-//        return incomeMapper.toDTO(incomeUseCase.getIncome(consumerId, incomeDomain));
-//    }
+    public IncomeOutputDTO get(String consumerId, String id) {
+        IncomeDomain incomeDomain = incomeMapper.toDomain(consumerId, id);
+
+        return incomeMapper.toDTO(getIncomeUseCase.get(incomeDomain));
+    }
 }

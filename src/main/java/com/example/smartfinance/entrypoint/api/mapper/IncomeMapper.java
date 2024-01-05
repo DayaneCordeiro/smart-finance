@@ -15,6 +15,8 @@ public interface IncomeMapper {
     @Mapping(target = "id", source = "incomeInputDTO.id")
     IncomeDomain toDomain(final IncomeInputDTO incomeInputDTO, final String consumerId);
 
+    IncomeDomain toDomain(final String consumerId, final String id);
+
     IncomeOutputDTO toDTO(final IncomeDomain incomeDomain);
 
     List<IncomeOutputDTO> toDTO(final List<IncomeDomain> incomeDomain);

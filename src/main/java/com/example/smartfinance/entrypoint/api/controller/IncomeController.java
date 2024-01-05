@@ -14,8 +14,6 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 import static io.swagger.v3.oas.annotations.enums.ParameterIn.HEADER;
 
 @Tag(name = "Incomes", description = "The income API")
@@ -49,7 +47,7 @@ public interface IncomeController {
             @Valid @RequestBody final IncomeInputDTO incomeInputDTO
     );
 
-    @Operation(summary = "Get incomes")
+    @Operation(summary = "Get income")
     @Parameter(name = "consumer-id", in = HEADER, required = true, description = "consumer-id", example = "1")
     @ApiResponses(value = {
         @ApiResponse(
@@ -70,8 +68,8 @@ public interface IncomeController {
         )
     })
     @GetMapping
-    List<IncomeOutputDTO> get(
+    IncomeOutputDTO get(
         @RequestHeader(value = "consumer-id") final String consumerId,
-        @Valid @RequestBody final IncomeInputDTO incomeInputDTO
+        @Valid @RequestBody final String id
     );
 }
