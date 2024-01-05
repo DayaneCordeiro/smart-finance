@@ -16,7 +16,12 @@ public class IncomeControllerImpl implements IncomeController {
     private final IncomeFacade incomeFacade;
 
     @Override
-    public List<IncomeOutputDTO> getIncomes(String consumerId, IncomeInputDTO incomeInputDTO) {
-        return incomeFacade.getIncomes(consumerId, incomeInputDTO);
+    public IncomeOutputDTO create(String consumerId, IncomeInputDTO incomeInputDTO) {
+        return incomeFacade.create(consumerId, incomeInputDTO);
+    }
+
+    @Override
+    public List<IncomeOutputDTO> get(String consumerId, IncomeInputDTO incomeInputDTO) {
+        return null;
     }
 }
