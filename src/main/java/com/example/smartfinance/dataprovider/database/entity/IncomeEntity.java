@@ -17,7 +17,7 @@ public record IncomeEntity (
         String name,
         String description,
         BigDecimal value,
-        LocalDate month,
+        LocalDate date,
         LocalDateTime createdAt,
         LocalDateTime updatedAt
 ) {

@@ -12,6 +12,6 @@ public record IncomeDomain (
     String name,
     String description,
     BigDecimal value,
-    LocalDate month
+    LocalDate date
 ) {
 }

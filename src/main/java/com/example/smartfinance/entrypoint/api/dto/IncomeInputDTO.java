@@ -12,6 +12,6 @@ public record IncomeInputDTO(
     String name,
     String description,
     BigDecimal value,
-    LocalDate month
+    LocalDate date
 ) {
 }
