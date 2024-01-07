@@ -1,10 +1,13 @@
 package com.example.smartfinance.core.usecase.impl;
 
 import com.example.smartfinance.core.domain.IncomeDomain;
+import com.example.smartfinance.core.enumaration.Periodicity;
 import com.example.smartfinance.core.gateway.IncomeGateway;
 import com.example.smartfinance.core.usecase.GetIncomeUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 @RequiredArgsConstructor

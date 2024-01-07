@@ -7,6 +7,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
@@ -16,6 +17,8 @@ public interface IncomeMapper {
     IncomeDomain toDomain(final IncomeInputDTO incomeInputDTO, final String consumerId);
 
     IncomeDomain toDomain(final String consumerId, final String id);
+
+    IncomeDomain toDomain(final String consumerId, final LocalDate date);
 
     IncomeOutputDTO toDTO(final IncomeDomain incomeDomain);
 

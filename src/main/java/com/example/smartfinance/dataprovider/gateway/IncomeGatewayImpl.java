@@ -1,7 +1,7 @@
 package com.example.smartfinance.dataprovider.gateway;
 
 import com.example.smartfinance.core.domain.IncomeDomain;
-import com.example.smartfinance.core.exception.ConsumerIncomeNotFound;
+import com.example.smartfinance.core.exception.ConsumerIncomeNotFoundException;
 import com.example.smartfinance.core.gateway.IncomeGateway;
 import com.example.smartfinance.dataprovider.database.entity.IncomeEntity;
 import com.example.smartfinance.dataprovider.database.mapper.EntityMapper;
@@ -26,6 +26,6 @@ public class IncomeGatewayImpl implements IncomeGateway {
     public IncomeDomain get(IncomeDomain incomeDomain) {
         return incomeRepository.findByIdAndConsumerId(incomeDomain.id(), incomeDomain.consumerId())
                 .map(entityMapper::toDomain)
-                .orElseThrow(() -> new ConsumerIncomeNotFound(incomeDomain.id(), incomeDomain.consumerId()));
+                .orElseThrow(() -> new ConsumerIncomeNotFoundException(incomeDomain.id(), incomeDomain.consumerId()));
     }
 }
