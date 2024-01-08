@@ -10,4 +10,6 @@ import java.util.Optional;
 public interface IncomeRepository extends MongoRepository<IncomeEntity, String> {
 
     Optional<IncomeEntity> findByIdAndConsumerId(String id, String consumerId);
+
+    Optional<IncomeEntity> findByDate();
 }

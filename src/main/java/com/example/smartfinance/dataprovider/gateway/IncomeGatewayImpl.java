@@ -9,6 +9,8 @@ import com.example.smartfinance.dataprovider.database.repository.IncomeRepositor
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @RequiredArgsConstructor
 public class IncomeGatewayImpl implements IncomeGateway {
@@ -27,5 +29,10 @@ public class IncomeGatewayImpl implements IncomeGateway {
         return incomeRepository.findByIdAndConsumerId(incomeDomain.id(), incomeDomain.consumerId())
                 .map(entityMapper::toDomain)
                 .orElseThrow(() -> new ConsumerIncomeNotFoundException(incomeDomain.id(), incomeDomain.consumerId()));
+    }
+
+    @Override
+    public List<IncomeDomain> getByDate(IncomeDomain incomeDomain) {
+        return null;
     }
 }
