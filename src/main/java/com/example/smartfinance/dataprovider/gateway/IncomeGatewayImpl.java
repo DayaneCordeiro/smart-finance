@@ -40,7 +40,7 @@ public class IncomeGatewayImpl implements IncomeGateway {
 
     @Override
     public List<IncomeDomain> getByMonth(IncomeDomain incomeDomain) {
-        return incomeRepository.findByMonthAndConsumerId(incomeDomain.month(), incomeDomain.consumerId())
+        return incomeRepository.findByMonthAndYearAndConsumerId(incomeDomain.month(), incomeDomain.year(), incomeDomain.consumerId())
                 .stream().map(entityMapper::toDomain).toList();
     }
 

@@ -16,7 +16,7 @@ public interface IncomeRepository extends MongoRepository<IncomeEntity, String> 
 
     Set<IncomeEntity> findByDateAndConsumerId(LocalDate date, String consumerId);
 
-    Set<IncomeEntity> findByMonthAndConsumerId(Month month, String consumerId);
+    Set<IncomeEntity> findByMonthAndYearAndConsumerId(Month month, Integer year, String consumerId);
 
     Set<IncomeEntity> findByYearAndConsumerId(Integer year, String consumerId);
 }
