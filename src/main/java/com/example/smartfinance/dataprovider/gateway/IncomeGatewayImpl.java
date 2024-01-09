@@ -33,6 +33,8 @@ public class IncomeGatewayImpl implements IncomeGateway {
 
     @Override
     public List<IncomeDomain> getByDate(IncomeDomain incomeDomain) {
-        return null;
+
+        return incomeRepository.findByDateAndConsumerId(incomeDomain.date(), incomeDomain.consumerId())
+                .stream().map(entityMapper::toDomain).toList();
     }
 }
