@@ -20,7 +20,7 @@ public record IncomeEntity (
         BigDecimal value,
         LocalDate date,
         Month month,
-        Integer day,
+        Integer year,
         LocalDateTime createdAt,
         LocalDateTime updatedAt
 ) {

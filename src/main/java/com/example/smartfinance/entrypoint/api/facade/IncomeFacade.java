@@ -29,9 +29,9 @@ public class IncomeFacade {
 
     public IncomeOutputDTO create(String consumerId, IncomeInputDTO inputDTO) {
         final Month month = inputDTO.date().getMonth();
-        final int day = inputDTO.date().getDayOfMonth();
+        final int year = inputDTO.date().getYear();
 
-        IncomeDomain incomeDomain = incomeMapper.toDomain(inputDTO, consumerId, month, day);
+        IncomeDomain incomeDomain = incomeMapper.toDomain(inputDTO, consumerId, month, year);
 
         return incomeMapper.toDTO(incomeCreateUseCase.create(incomeDomain));
     }

@@ -16,6 +16,6 @@ public record IncomeDomain (
     BigDecimal value,
     LocalDate date,
     Month month,
-    Integer day
+    Integer year
 ) {
 }

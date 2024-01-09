@@ -15,6 +15,6 @@ public record IncomeOutputDTO(
     BigDecimal value,
     LocalDate date,
     Month month,
-    Integer day
+    Integer year
 ) {
 }
