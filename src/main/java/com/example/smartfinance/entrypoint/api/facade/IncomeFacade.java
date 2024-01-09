@@ -14,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 
 @Slf4j
@@ -27,7 +28,10 @@ public class IncomeFacade {
     private final IncomeMapper incomeMapper;
 
     public IncomeOutputDTO create(String consumerId, IncomeInputDTO inputDTO) {
-        IncomeDomain incomeDomain = incomeMapper.toDomain(inputDTO, consumerId);
+        final Month month = inputDTO.date().getMonth();
+        final int day = inputDTO.date().getDayOfMonth();
+
+        IncomeDomain incomeDomain = incomeMapper.toDomain(inputDTO, consumerId, month, day);
 
         return incomeMapper.toDTO(incomeCreateUseCase.create(incomeDomain));
     }

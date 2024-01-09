@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Month;
 
 @Builder
 @Document(collection = "incomes")
@@ -18,6 +19,8 @@ public record IncomeEntity (
         String description,
         BigDecimal value,
         LocalDate date,
+        Month month,
+        Integer day,
         LocalDateTime createdAt,
         LocalDateTime updatedAt
 ) {

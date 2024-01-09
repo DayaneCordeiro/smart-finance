@@ -1,9 +1,11 @@
 package com.example.smartfinance.core.domain;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.Month;
 
 @Builder
 public record IncomeDomain (
@@ -12,6 +14,8 @@ public record IncomeDomain (
     String name,
     String description,
     BigDecimal value,
-    LocalDate date
+    LocalDate date,
+    Month month,
+    Integer day
 ) {
 }
