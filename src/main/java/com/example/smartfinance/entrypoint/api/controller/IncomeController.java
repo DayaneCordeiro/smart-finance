@@ -105,7 +105,7 @@ public interface IncomeController {
             )}
         )
     })
-    @GetMapping("/get-by-date/{date}")
+    @GetMapping("/get-by-period/{date}")
     List<IncomeOutputDTO> getByPeriod(
             @RequestHeader(value = "consumer-id") final String consumerId,
             @PathVariable @NotBlank final String date,

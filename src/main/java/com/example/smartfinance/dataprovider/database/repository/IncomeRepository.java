@@ -5,6 +5,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.Optional;
 import java.util.Set;
 
@@ -14,4 +15,6 @@ public interface IncomeRepository extends MongoRepository<IncomeEntity, String> 
     Optional<IncomeEntity> findByIdAndConsumerId(String id, String consumerId);
 
     Set<IncomeEntity> findByDateAndConsumerId(LocalDate date, String consumerId);
+
+    Set<IncomeEntity> findByMonthAndConsumerId(Month month, String consumerId);
 }
