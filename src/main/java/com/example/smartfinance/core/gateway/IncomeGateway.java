@@ -13,4 +13,6 @@ public interface IncomeGateway {
     List<IncomeDomain> getByDate(IncomeDomain incomeDomain);
 
     List<IncomeDomain> getByMonth(IncomeDomain incomeDomain);
+
+    List<IncomeDomain> getByYear(IncomeDomain incomeDomain);
 }

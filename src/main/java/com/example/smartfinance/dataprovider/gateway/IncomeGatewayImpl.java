@@ -43,4 +43,10 @@ public class IncomeGatewayImpl implements IncomeGateway {
         return incomeRepository.findByMonthAndConsumerId(incomeDomain.month(), incomeDomain.consumerId())
                 .stream().map(entityMapper::toDomain).toList();
     }
+
+    @Override
+    public List<IncomeDomain> getByYear(IncomeDomain incomeDomain) {
+        return incomeRepository.findByYearAndConsumerId(incomeDomain.year(), incomeDomain.consumerId())
+                .stream().map(entityMapper::toDomain).toList();
+    }
 }
