@@ -4,7 +4,7 @@ import com.example.smartfinance.core.domain.IncomeDomain;
 import com.example.smartfinance.core.enumaration.Periodicity;
 import com.example.smartfinance.core.usecase.GetIncomeByPeriodUseCase;
 import com.example.smartfinance.core.usecase.GetIncomeUseCase;
-import com.example.smartfinance.core.usecase.IncomeCreateUseCase;
+import com.example.smartfinance.core.usecase.CreateIncomeUseCase;
 import com.example.smartfinance.entrypoint.api.dto.IncomeInputDTO;
 import com.example.smartfinance.entrypoint.api.dto.IncomeOutputDTO;
 import com.example.smartfinance.entrypoint.api.dto.PeriodicityInputDTO;
@@ -23,7 +23,7 @@ import java.util.List;
 public class IncomeFacade {
 
     private final GetIncomeUseCase getIncomeUseCase;
-    private final IncomeCreateUseCase incomeCreateUseCase;
+    private final CreateIncomeUseCase createIncomeUseCase;
     private final GetIncomeByPeriodUseCase getIncomeByPeriodUseCase;
     private final IncomeMapper incomeMapper;
 
@@ -33,7 +33,7 @@ public class IncomeFacade {
 
         IncomeDomain incomeDomain = incomeMapper.toDomain(inputDTO, consumerId, month, year);
 
-        return incomeMapper.toDTO(incomeCreateUseCase.create(incomeDomain));
+        return incomeMapper.toDTO(createIncomeUseCase.create(incomeDomain));
     }
 
     public IncomeOutputDTO get(String consumerId, String id) {
