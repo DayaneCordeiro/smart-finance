@@ -2,6 +2,7 @@ package com.example.smartfinance.entrypoint.api.facade;
 
 import com.example.smartfinance.core.domain.IncomeDomain;
 import com.example.smartfinance.core.enumaration.Periodicity;
+import com.example.smartfinance.core.usecase.DeleteIncomeUseCase;
 import com.example.smartfinance.core.usecase.GetIncomeByPeriodUseCase;
 import com.example.smartfinance.core.usecase.GetIncomeUseCase;
 import com.example.smartfinance.core.usecase.CreateIncomeUseCase;
@@ -25,6 +26,7 @@ public class IncomeFacade {
     private final GetIncomeUseCase getIncomeUseCase;
     private final CreateIncomeUseCase createIncomeUseCase;
     private final GetIncomeByPeriodUseCase getIncomeByPeriodUseCase;
+    private final DeleteIncomeUseCase deleteIncomeUseCase;
     private final IncomeMapper incomeMapper;
 
     public IncomeOutputDTO create(String consumerId, IncomeInputDTO inputDTO) {
@@ -49,5 +51,11 @@ public class IncomeFacade {
         Periodicity periodicity = Periodicity.valueOf(inputDTO.periodicity().toString());
 
         return incomeMapper.toDTO(getIncomeByPeriodUseCase.getByPeriod(incomeDomain, periodicity));
+    }
+
+    public void deleteIncome(String consumerId, String id) {
+        IncomeDomain incomeDomain = incomeMapper.toDomain(consumerId, id);
+
+        deleteIncomeUseCase.deleteIncome(incomeDomain);
     }
 }

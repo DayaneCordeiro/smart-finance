@@ -30,4 +30,9 @@ public class IncomeControllerImpl implements IncomeController {
     public List<IncomeOutputDTO> getByPeriod(String consumerId, String date, PeriodicityInputDTO inputDTO) {
         return incomeFacade.getByPeriod(consumerId, date, inputDTO);
     }
+
+    @Override
+    public void deleteIncome(String consumerId, String id) {
+        incomeFacade.deleteIncome(consumerId, id);
+    }
 }
