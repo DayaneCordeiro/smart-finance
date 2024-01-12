@@ -128,4 +128,28 @@ public interface IncomeController {
         @RequestHeader(value = "consumer-id") final String consumerId,
         @PathVariable @NotBlank final String id
     );
+
+    @Operation(summary = "Update income")
+    @Parameter(name = "consumer-id", in = HEADER, required = true, description = "consumer-id", example = "1")
+    @ApiResponses(value = {
+        @ApiResponse(
+            responseCode = "204",
+            description = "Income successful updated."
+        ),
+        @ApiResponse(
+            responseCode = "500",
+            description = "Internal server error",
+            content = {@Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = StandardErrorDTO.class)
+            )}
+        )
+    })
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    void updateIncome(
+        @RequestHeader(value = "consumer-id") final String consumerId,
+        @PathVariable @NotBlank final String id,
+        @Valid @RequestBody final IncomeInputDTO incomeInputDTO
+    );
 }

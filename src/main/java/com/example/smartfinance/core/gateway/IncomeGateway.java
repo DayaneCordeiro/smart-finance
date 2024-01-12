@@ -17,4 +17,6 @@ public interface IncomeGateway {
     List<IncomeDomain> getByYear(IncomeDomain incomeDomain);
 
     void delete(IncomeDomain incomeDomain);
+
+    void update(IncomeDomain incomeDomain);
 }

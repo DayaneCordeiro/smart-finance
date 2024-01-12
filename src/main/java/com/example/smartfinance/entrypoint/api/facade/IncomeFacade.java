@@ -58,4 +58,8 @@ public class IncomeFacade {
 
         deleteIncomeUseCase.deleteIncome(incomeDomain);
     }
+
+    public void updateIncome(String consumerId, String id, IncomeInputDTO inputDTO) {
+        // TODO: criar lógica
+    }
 }

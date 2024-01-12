@@ -35,4 +35,9 @@ public class IncomeControllerImpl implements IncomeController {
     public void deleteIncome(String consumerId, String id) {
         incomeFacade.deleteIncome(consumerId, id);
     }
+
+    @Override
+    public void updateIncome(String consumerId, String id, IncomeInputDTO incomeInputDTO) {
+
+    }
 }
