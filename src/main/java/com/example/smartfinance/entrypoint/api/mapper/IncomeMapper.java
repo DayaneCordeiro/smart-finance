@@ -19,6 +19,16 @@ public interface IncomeMapper {
     @Mapping(target = "consumerId", source = "consumerId")
     IncomeDomain toDomain(final IncomeInputDTO incomeInputDTO, final String consumerId, final Month month, final Integer year);
 
+    @Mapping(target = "id", source = "id")
+    @Mapping(target = "consumerId", source = "consumerId")
+    @Mapping(target = "name", source = "incomeInputDTO.name")
+    @Mapping(target = "description", source = "incomeInputDTO.description")
+    @Mapping(target = "value", source = "incomeInputDTO.value")
+    @Mapping(target = "date", source = "incomeInputDTO.date")
+    @Mapping(target = "month", source = "incomeInputDTO.month")
+    @Mapping(target = "year", source = "incomeInputDTO.year")
+    IncomeDomain toDomain(final String consumerId, final String id, final IncomeInputDTO incomeInputDTO);
+
     IncomeDomain toDomain(final String consumerId, final String id);
 
     @Mapping(target = "date", source = "date")

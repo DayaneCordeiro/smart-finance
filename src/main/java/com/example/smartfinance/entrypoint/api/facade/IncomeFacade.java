@@ -2,10 +2,7 @@ package com.example.smartfinance.entrypoint.api.facade;
 
 import com.example.smartfinance.core.domain.IncomeDomain;
 import com.example.smartfinance.core.enumaration.Periodicity;
-import com.example.smartfinance.core.usecase.DeleteIncomeUseCase;
-import com.example.smartfinance.core.usecase.GetIncomeByPeriodUseCase;
-import com.example.smartfinance.core.usecase.GetIncomeUseCase;
-import com.example.smartfinance.core.usecase.CreateIncomeUseCase;
+import com.example.smartfinance.core.usecase.*;
 import com.example.smartfinance.entrypoint.api.dto.IncomeInputDTO;
 import com.example.smartfinance.entrypoint.api.dto.IncomeOutputDTO;
 import com.example.smartfinance.entrypoint.api.dto.PeriodicityInputDTO;
@@ -27,6 +24,7 @@ public class IncomeFacade {
     private final CreateIncomeUseCase createIncomeUseCase;
     private final GetIncomeByPeriodUseCase getIncomeByPeriodUseCase;
     private final DeleteIncomeUseCase deleteIncomeUseCase;
+    private final UpdateIncomeUseCase updateIncomeUseCase;
     private final IncomeMapper incomeMapper;
 
     public IncomeOutputDTO create(String consumerId, IncomeInputDTO inputDTO) {
@@ -60,6 +58,8 @@ public class IncomeFacade {
     }
 
     public void updateIncome(String consumerId, String id, IncomeInputDTO inputDTO) {
-        // TODO: criar lógica
+        IncomeDomain incomeDomain = incomeMapper.toDomain(consumerId, id, inputDTO);
+
+        updateIncomeUseCase.updateIncome(incomeDomain);
     }
 }

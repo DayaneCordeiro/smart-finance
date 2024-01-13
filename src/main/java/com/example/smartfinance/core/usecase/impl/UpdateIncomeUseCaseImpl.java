@@ -14,6 +14,19 @@ public class UpdateIncomeUseCaseImpl implements UpdateIncomeUseCase {
 
     @Override
     public void updateIncome(IncomeDomain incomeDomain) {
-        // TODO: criar lógica
+        IncomeDomain oldIncome = incomeGateway.get(incomeDomain);
+
+        IncomeDomain newIncome = IncomeDomain.builder()
+            .id(incomeDomain.id())
+            .consumerId(incomeDomain.consumerId())
+            .name(incomeDomain.name() == null ? oldIncome.name() : incomeDomain.name())
+            .description(incomeDomain.description() == null ? oldIncome.description() : incomeDomain.description())
+            .value(incomeDomain.value() == null ? oldIncome.value() : incomeDomain.value())
+            .date(incomeDomain.date() == null ? oldIncome.date() : incomeDomain.date())
+            .month(incomeDomain.month() == null ? oldIncome.month() : incomeDomain.month())
+            .year(incomeDomain.year() == null ? oldIncome.year() : incomeDomain.year())
+            .build();
+
+        incomeGateway.update(newIncome);
     }
 }

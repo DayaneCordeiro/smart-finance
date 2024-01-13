@@ -4,6 +4,7 @@ import lombok.Builder;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.Month;
 
 @Builder
 public record IncomeInputDTO(
@@ -12,6 +13,8 @@ public record IncomeInputDTO(
     String name,
     String description,
     BigDecimal value,
+    Month month,
+    Integer year,
     LocalDate date
 ) {
 }

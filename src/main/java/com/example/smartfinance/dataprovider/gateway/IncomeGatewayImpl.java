@@ -58,6 +58,7 @@ public class IncomeGatewayImpl implements IncomeGateway {
 
     @Override
     public void update(IncomeDomain incomeDomain) {
-        // TODO: criar lógica com o save
+        IncomeEntity incomeEntity = entityMapper.toEntity(incomeDomain);
+        incomeRepository.save(incomeEntity);
     }
 }

@@ -38,6 +38,6 @@ public class IncomeControllerImpl implements IncomeController {
 
     @Override
     public void updateIncome(String consumerId, String id, IncomeInputDTO incomeInputDTO) {
-
+        incomeFacade.updateIncome(consumerId, id, incomeInputDTO);
     }
 }
