@@ -1,4 +1,9 @@
 package com.example.smartfinance.dataprovider.database.repository;
 
-public interface ExpenseRepository {
+import com.example.smartfinance.dataprovider.database.entity.ExpenseEntity;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ExpenseRepository extends MongoRepository<ExpenseEntity, String> {
 }
