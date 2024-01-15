@@ -1,4 +1,9 @@
 package com.example.smartfinance.core.enumaration;
 
-public class ExpenseType {
+public enum ExpenseType {
+    FIXED,
+    VARIABLE,
+    DEBT,
+    EXTRA,
+    CREDIT_CARD
 }
