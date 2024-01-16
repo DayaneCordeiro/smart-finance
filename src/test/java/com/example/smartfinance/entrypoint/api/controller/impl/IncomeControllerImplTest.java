@@ -15,7 +15,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 
@@ -83,6 +82,24 @@ public class IncomeControllerImplTest {
 
         verify(incomeFacade, only()).getByPeriod(CONSUMER_ID, DATE, inputDTO);
         assertEquals(incomeOutputDTO, response);
+    }
+
+    @Test
+    @DisplayName("Should successful delete income")
+    void should_delete_income() {
+        incomeController.deleteIncome(CONSUMER_ID, INCOME_ID);
+
+        verify(incomeFacade, only()).deleteIncome(CONSUMER_ID, INCOME_ID);
+    }
+
+    @Test
+    @DisplayName("Shoul successful update income")
+    void should_update_income() {
+        var inputDTO = easyRandom.nextObject(IncomeInputDTO.class);
+
+        incomeController.updateIncome(CONSUMER_ID, INCOME_ID, inputDTO);
+
+        verify(incomeFacade, only()).updateIncome(CONSUMER_ID, INCOME_ID, inputDTO);
     }
 
 }
