@@ -19,10 +19,14 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.only;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class IncomeControllerImplTest {
+class IncomeControllerImplTest {
 
     private static final String CONSUMER_ID = "1";
     private static final String INCOME_ID = "659dbd0bf4ab1e2f5340cfe5";
