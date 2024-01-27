@@ -9,6 +9,7 @@ import com.example.smartfinance.entrypoint.api.dto.PeriodicityInputDTO;
 import com.example.smartfinance.entrypoint.api.mapper.IncomeMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -27,7 +28,7 @@ public class IncomeFacade {
     private final UpdateIncomeUseCase updateIncomeUseCase;
     private final IncomeMapper incomeMapper;
 
-    public IncomeOutputDTO create(String consumerId, IncomeInputDTO inputDTO) {
+    public IncomeOutputDTO create(String consumerId, @NotNull IncomeInputDTO inputDTO) {
         final Month month = inputDTO.date().getMonth();
         final int year = inputDTO.date().getYear();
 
