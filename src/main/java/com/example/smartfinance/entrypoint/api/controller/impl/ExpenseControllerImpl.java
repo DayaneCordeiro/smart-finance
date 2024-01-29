@@ -20,6 +20,6 @@ public class ExpenseControllerImpl implements ExpenseController {
 
     @Override
     public ExpenseOutputDTO get(String consumerId, String id) {
-        return null;
+        return expenseFacade.get(consumerId, id);
     }
 }

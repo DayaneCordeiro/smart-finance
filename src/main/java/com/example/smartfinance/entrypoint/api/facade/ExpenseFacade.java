@@ -24,5 +24,8 @@ public class ExpenseFacade {
         return expenseMapper.toDTO(createExpenseUseCase.create(expenseDomain));
     }
 
+    public ExpenseOutputDTO get(String consumerId, String id) {
+        return null;
+    }
 
 }
