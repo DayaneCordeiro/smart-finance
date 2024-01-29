@@ -24,6 +24,8 @@ public class ExpenseControllerImplTest {
 
     private static final String CONSUMER_ID = "1";
 
+    private static final String ID = "1";
+
     @Mock
     ExpenseFacade expenseFacade;
 
@@ -50,5 +52,18 @@ public class ExpenseControllerImplTest {
 
         assertEquals(response, outputDTO);
         verify(expenseFacade, only()).create(CONSUMER_ID, inputDTO);
+    }
+
+    @Test
+    @DisplayName("Should get expense by id")
+    void should_get_expense() {
+        ExpenseOutputDTO outputDTO = easyRandom.nextObject(ExpenseOutputDTO.class);
+
+        when(expenseFacade.get(CONSUMER_ID, ID)).thenReturn(outputDTO);
+
+        ExpenseOutputDTO response = expenseController.get(CONSUMER_ID, ID);
+
+        assertEquals(response, outputDTO);
+        verify(expenseFacade, only()).get(CONSUMER_ID, ID);
     }
 }
