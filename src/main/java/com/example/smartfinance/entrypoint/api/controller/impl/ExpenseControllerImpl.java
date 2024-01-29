@@ -17,4 +17,9 @@ public class ExpenseControllerImpl implements ExpenseController {
     public ExpenseOutputDTO create(String consumerId, ExpenseInputDTO expenseInputDTO) {
         return expenseFacade.create(consumerId, expenseInputDTO);
     }
+
+    @Override
+    public ExpenseOutputDTO get(String consumerId, String id) {
+        return null;
+    }
 }
