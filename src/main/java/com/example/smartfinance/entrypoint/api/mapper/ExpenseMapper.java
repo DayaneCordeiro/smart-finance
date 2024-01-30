@@ -13,5 +13,8 @@ public interface ExpenseMapper {
     @Mapping(target = "consumerId", source = "consumerId")
     ExpenseDomain toDomain(String consumerId, ExpenseInputDTO expenseInputDTO);
 
+    @Mapping(target = "consumerId", source = "consumerId")
+    ExpenseDomain toDomain(String consumerId, String id);
+
     ExpenseOutputDTO toDTO(ExpenseDomain expenseDomain);
 }
