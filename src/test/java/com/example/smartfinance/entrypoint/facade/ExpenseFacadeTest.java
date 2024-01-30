@@ -2,6 +2,7 @@ package com.example.smartfinance.entrypoint.facade;
 
 import com.example.smartfinance.core.domain.ExpenseDomain;
 import com.example.smartfinance.core.usecase.CreateExpenseUseCase;
+import com.example.smartfinance.core.usecase.GetExpenseUseCase;
 import com.example.smartfinance.entrypoint.api.dto.ExpenseInputDTO;
 import com.example.smartfinance.entrypoint.api.dto.ExpenseOutputDTO;
 import com.example.smartfinance.entrypoint.api.facade.ExpenseFacade;
@@ -27,6 +28,8 @@ public class ExpenseFacadeTest {
 
     private static final String CONSUMER_ID = "1";
 
+    private static final String ID = "1";
+
     @InjectMocks
     ExpenseFacade expenseFacade;
 
@@ -35,6 +38,9 @@ public class ExpenseFacadeTest {
 
     @Mock
     CreateExpenseUseCase createExpenseUseCase;
+
+    @Mock
+    GetExpenseUseCase getExpenseUseCase;
 
     private EasyRandom easyRandom;
 
@@ -59,5 +65,21 @@ public class ExpenseFacadeTest {
 
         assertEquals(response, outputDTO);
         verify(createExpenseUseCase, only()).create(expenseDomain);
+    }
+
+    @Test
+    @DisplayName("Should get a expense")
+    void should_get_expense() {
+        ExpenseDomain expenseDomain = easyRandom.nextObject(ExpenseDomain.class);
+        ExpenseOutputDTO outputDTO = easyRandom.nextObject(ExpenseOutputDTO.class);
+
+        when(expenseMapper.toDomain(CONSUMER_ID, ID)).thenReturn(expenseDomain);
+        when(expenseMapper.toDTO(expenseDomain)).thenReturn(outputDTO);
+        when(getExpenseUseCase.get(expenseDomain)).thenReturn(expenseDomain);
+
+        ExpenseOutputDTO response = expenseFacade.get(CONSUMER_ID, ID);
+
+        assertEquals(response, outputDTO);
+        verify(getExpenseUseCase, only()).get(expenseDomain);
     }
 }
