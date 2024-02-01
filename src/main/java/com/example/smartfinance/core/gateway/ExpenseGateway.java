@@ -5,4 +5,6 @@ import com.example.smartfinance.core.domain.ExpenseDomain;
 public interface ExpenseGateway {
 
     ExpenseDomain create(ExpenseDomain expenseDomain);
+
+    ExpenseDomain get(ExpenseDomain expenseDomain);
 }

@@ -1,6 +1,7 @@
 package com.example.smartfinance.dataprovider.gateway;
 
 import com.example.smartfinance.core.domain.ExpenseDomain;
+import com.example.smartfinance.core.exception.ConsumerExpenseNotFoundException;
 import com.example.smartfinance.core.gateway.ExpenseGateway;
 import com.example.smartfinance.dataprovider.database.entity.ExpenseEntity;
 import com.example.smartfinance.dataprovider.database.mapper.EntityMapper;
@@ -21,5 +22,12 @@ public class ExpenseGatewayImpl implements ExpenseGateway {
         ExpenseEntity expenseEntity = entityMapper.toEntity(expenseDomain);
 
         return entityMapper.toDomain(expenseRepository.save(expenseEntity));
+    }
+
+    @Override
+    public ExpenseDomain get(ExpenseDomain expenseDomain) {
+        return expenseRepository.getByIdAndConsumerId(expenseDomain.id(), expenseDomain.consumerId())
+                .map(entityMapper::toDomain)
+                .orElseThrow(() -> new ConsumerExpenseNotFoundException(expenseDomain.id(), expenseDomain.consumerId()));
     }
 }
