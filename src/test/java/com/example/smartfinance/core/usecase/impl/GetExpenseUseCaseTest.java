@@ -2,7 +2,6 @@ package com.example.smartfinance.core.usecase.impl;
 
 import com.example.smartfinance.core.domain.ExpenseDomain;
 import com.example.smartfinance.core.gateway.ExpenseGateway;
-import com.example.smartfinance.core.usecase.impl.GetExpenseUseCaseImpl;
 import com.example.smartfinance.factory.RecordFactory;
 import org.jeasy.random.EasyRandom;
 import org.jeasy.random.EasyRandomParameters;

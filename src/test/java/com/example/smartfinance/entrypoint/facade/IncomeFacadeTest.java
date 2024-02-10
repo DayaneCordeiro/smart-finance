@@ -2,6 +2,7 @@ package com.example.smartfinance.entrypoint.facade;
 
 import com.example.smartfinance.core.domain.IncomeDomain;
 import com.example.smartfinance.core.usecase.CreateIncomeUseCase;
+import com.example.smartfinance.core.usecase.GetIncomeUseCase;
 import com.example.smartfinance.entrypoint.api.dto.IncomeInputDTO;
 import com.example.smartfinance.entrypoint.api.dto.IncomeOutputDTO;
 import com.example.smartfinance.entrypoint.api.facade.IncomeFacade;
@@ -28,12 +29,16 @@ import static org.mockito.Mockito.when;
 public class IncomeFacadeTest {
 
     private static final String CONSUMER_ID = "1";
+    private static final String ID = "1";
 
     @Mock
     IncomeMapper incomeMapper;
 
     @Mock
     CreateIncomeUseCase createIncomeUseCase;
+
+    @Mock
+    GetIncomeUseCase getIncomeUseCase;
 
     @InjectMocks
     IncomeFacade incomeFacade;
@@ -65,5 +70,21 @@ public class IncomeFacadeTest {
 
         assertEquals(response, outputDTO);
         verify(createIncomeUseCase, only()).create(incomeDomain);
+    }
+
+    @Test
+    @DisplayName("Should get income")
+    void should_get_income() {
+        IncomeDomain incomeDomain = easyRandom.nextObject(IncomeDomain.class);
+        IncomeOutputDTO outputDTO = easyRandom.nextObject(IncomeOutputDTO.class);
+
+        when(incomeMapper.toDomain(CONSUMER_ID, ID)).thenReturn(incomeDomain);
+        when(incomeMapper.toDTO(incomeDomain)).thenReturn(outputDTO);
+        when(getIncomeUseCase.get(incomeDomain)).thenReturn(incomeDomain);
+
+        IncomeOutputDTO response = incomeFacade.get(CONSUMER_ID, ID);
+
+        assertEquals(response, outputDTO);
+        verify(getIncomeUseCase, only()).get(incomeDomain);
     }
 }

@@ -97,7 +97,7 @@ class IncomeControllerImplTest {
     }
 
     @Test
-    @DisplayName("Shoul successful update income")
+    @DisplayName("Should successful update income")
     void should_update_income() {
         var inputDTO = easyRandom.nextObject(IncomeInputDTO.class);
 
