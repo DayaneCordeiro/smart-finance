@@ -44,9 +44,9 @@ public class IncomeFacade {
     }
 
     public List<IncomeOutputDTO> getByPeriod(String consumerId, String date, PeriodicityInputDTO inputDTO) {
-        LocalDate localDate = LocalDate.parse(date);
+        LocalDate period = LocalDate.parse(date);
 
-        IncomeDomain incomeDomain = incomeMapper.toDomain(consumerId, localDate);
+        IncomeDomain incomeDomain = incomeMapper.toDomain(consumerId, period);
         Periodicity periodicity = Periodicity.valueOf(inputDTO.periodicity().toString());
 
         return incomeMapper.toDTO(getIncomeByPeriodUseCase.getByPeriod(incomeDomain, periodicity));
