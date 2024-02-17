@@ -3,6 +3,7 @@ package com.example.smartfinance.entrypoint.facade;
 import com.example.smartfinance.core.domain.IncomeDomain;
 import com.example.smartfinance.core.enumaration.Periodicity;
 import com.example.smartfinance.core.usecase.CreateIncomeUseCase;
+import com.example.smartfinance.core.usecase.DeleteIncomeUseCase;
 import com.example.smartfinance.core.usecase.GetIncomeByPeriodUseCase;
 import com.example.smartfinance.core.usecase.GetIncomeUseCase;
 import com.example.smartfinance.entrypoint.api.dto.IncomeInputDTO;
@@ -48,6 +49,9 @@ public class IncomeFacadeTest {
 
     @Mock
     GetIncomeByPeriodUseCase getIncomeByPeriodUseCase;
+
+    @Mock
+    DeleteIncomeUseCase deleteIncomeUseCase;
 
     @InjectMocks
     IncomeFacade incomeFacade;
@@ -115,5 +119,17 @@ public class IncomeFacadeTest {
 
         assertEquals(response, outputDTO);
         verify(getIncomeByPeriodUseCase, only()).getByPeriod(incomeDomain, periodicityInputDTO.periodicity());
+    }
+
+    @Test
+    @DisplayName("Should delete income")
+    void should_delete_income() {
+        IncomeDomain incomeDomain = easyRandom.nextObject(IncomeDomain.class);
+
+        when(incomeMapper.toDomain(CONSUMER_ID, ID)).thenReturn(incomeDomain);
+
+        incomeFacade.deleteIncome(CONSUMER_ID, ID);
+
+        verify(deleteIncomeUseCase, only()).deleteIncome(incomeDomain);
     }
 }
