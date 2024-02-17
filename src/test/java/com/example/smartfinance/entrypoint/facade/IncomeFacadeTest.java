@@ -6,6 +6,7 @@ import com.example.smartfinance.core.usecase.CreateIncomeUseCase;
 import com.example.smartfinance.core.usecase.DeleteIncomeUseCase;
 import com.example.smartfinance.core.usecase.GetIncomeByPeriodUseCase;
 import com.example.smartfinance.core.usecase.GetIncomeUseCase;
+import com.example.smartfinance.core.usecase.UpdateIncomeUseCase;
 import com.example.smartfinance.entrypoint.api.dto.IncomeInputDTO;
 import com.example.smartfinance.entrypoint.api.dto.IncomeOutputDTO;
 import com.example.smartfinance.entrypoint.api.dto.PeriodicityInputDTO;
@@ -52,6 +53,9 @@ public class IncomeFacadeTest {
 
     @Mock
     DeleteIncomeUseCase deleteIncomeUseCase;
+
+    @Mock
+    UpdateIncomeUseCase updateIncomeUseCase;
 
     @InjectMocks
     IncomeFacade incomeFacade;
@@ -131,5 +135,18 @@ public class IncomeFacadeTest {
         incomeFacade.deleteIncome(CONSUMER_ID, ID);
 
         verify(deleteIncomeUseCase, only()).deleteIncome(incomeDomain);
+    }
+
+    @Test
+    @DisplayName("Should update income")
+    void should_update_income() {
+        IncomeDomain incomeDomain = easyRandom.nextObject(IncomeDomain.class);
+        IncomeInputDTO inputDTO = easyRandom.nextObject(IncomeInputDTO.class);
+
+        when(incomeMapper.toDomain(CONSUMER_ID, ID, inputDTO)).thenReturn(incomeDomain);
+
+        incomeFacade.updateIncome(CONSUMER_ID, ID, inputDTO);
+
+        verify(updateIncomeUseCase, only()).updateIncome(incomeDomain);
     }
 }
