@@ -1,6 +1,7 @@
 package com.example.smartfinance.core.domain;
 
-import com.example.smartfinance.core.enumaration.ExpenseType;
+import com.example.smartfinance.core.enumaration.ExpenseStatus;
+import com.example.smartfinance.core.type.ExpenseType;
 import lombok.Builder;
 
 import java.math.BigDecimal;
@@ -16,6 +17,7 @@ public record ExpenseDomain(
         LocalDate firstDueDate,
         BigDecimal totalValue,
         Integer installmentAmount,
-        BigDecimal installmentValue
+        BigDecimal installmentValue,
+        ExpenseStatus status
 ) {
 }

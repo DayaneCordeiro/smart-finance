@@ -1,4 +1,4 @@
-package com.example.smartfinance.core.enumaration;
+package com.example.smartfinance.core.type;
 
 public enum ExpenseType {
     FIXED,

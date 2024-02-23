@@ -1,7 +1,7 @@
 package com.example.smartfinance.core.domain;
 
+import com.example.smartfinance.core.enumaration.IncomeStatus;
 import lombok.Builder;
-import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -16,6 +16,7 @@ public record IncomeDomain (
     BigDecimal value,
     LocalDate date,
     Month month,
-    Integer year
+    Integer year,
+    IncomeStatus status
 ) {
 }

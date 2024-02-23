@@ -1,6 +1,6 @@
 package com.example.smartfinance.entrypoint.api.dto;
 
-import com.example.smartfinance.core.enumaration.ExpenseType;
+import com.example.smartfinance.core.type.ExpenseType;
 import lombok.Builder;
 
 import java.math.BigDecimal;
