@@ -1,5 +1,6 @@
 package com.example.smartfinance.entrypoint.api.dto;
 
+import com.example.smartfinance.core.enumaration.IncomeStatus;
 import lombok.Builder;
 
 import java.math.BigDecimal;
@@ -15,6 +16,7 @@ public record IncomeInputDTO(
     BigDecimal value,
     Month month,
     Integer year,
-    LocalDate date
+    LocalDate date,
+    IncomeStatus status
 ) {
 }

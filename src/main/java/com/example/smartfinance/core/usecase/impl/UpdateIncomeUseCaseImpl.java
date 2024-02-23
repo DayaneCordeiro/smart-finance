@@ -25,6 +25,7 @@ public class UpdateIncomeUseCaseImpl implements UpdateIncomeUseCase {
             .date(incomeDomain.date() == null ? oldIncome.date() : incomeDomain.date())
             .month(incomeDomain.month() == null ? oldIncome.month() : incomeDomain.month())
             .year(incomeDomain.year() == null ? oldIncome.year() : incomeDomain.year())
+            .status(incomeDomain.status() == null ? oldIncome.status() : incomeDomain.status())
             .build();
 
         incomeGateway.update(newIncome);
