@@ -1,7 +1,7 @@
 package com.example.smartfinance.entrypoint.api.controller.impl;
 
 import com.example.smartfinance.entrypoint.api.controller.ExpenseController;
-import com.example.smartfinance.entrypoint.api.dto.ExpenseInputDTO;
+import com.example.smartfinance.entrypoint.api.dto.expense.ExpenseRequestDTO;
 import com.example.smartfinance.entrypoint.api.dto.ExpenseOutputDTO;
 import com.example.smartfinance.entrypoint.api.facade.ExpenseFacade;
 import lombok.RequiredArgsConstructor;
@@ -14,8 +14,8 @@ public class ExpenseControllerImpl implements ExpenseController {
     private final ExpenseFacade expenseFacade;
 
     @Override
-    public ExpenseOutputDTO create(String consumerId, ExpenseInputDTO expenseInputDTO) {
-        return expenseFacade.create(consumerId, expenseInputDTO);
+    public ExpenseOutputDTO create(String consumerId, ExpenseRequestDTO expenseRequestDTO) {
+        return expenseFacade.create(consumerId, expenseRequestDTO);
     }
 
     @Override

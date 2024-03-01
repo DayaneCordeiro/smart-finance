@@ -3,7 +3,7 @@ package com.example.smartfinance.entrypoint.api.facade;
 import com.example.smartfinance.core.domain.ExpenseDomain;
 import com.example.smartfinance.core.usecase.CreateExpenseUseCase;
 import com.example.smartfinance.core.usecase.GetExpenseUseCase;
-import com.example.smartfinance.entrypoint.api.dto.ExpenseInputDTO;
+import com.example.smartfinance.entrypoint.api.dto.expense.ExpenseRequestDTO;
 import com.example.smartfinance.entrypoint.api.dto.ExpenseOutputDTO;
 import com.example.smartfinance.entrypoint.api.mapper.ExpenseMapper;
 import lombok.RequiredArgsConstructor;
@@ -21,8 +21,8 @@ public class ExpenseFacade {
 
     private final GetExpenseUseCase getExpenseUseCase;
 
-    public ExpenseOutputDTO create(String consumerId, ExpenseInputDTO expenseInputDTO) {
-        ExpenseDomain expenseDomain = expenseMapper.toDomain(consumerId, expenseInputDTO);
+    public ExpenseOutputDTO create(String consumerId, ExpenseRequestDTO expenseRequestDTO) {
+        ExpenseDomain expenseDomain = expenseMapper.toDomain(consumerId, expenseRequestDTO);
 
         return expenseMapper.toDTO(createExpenseUseCase.create(expenseDomain));
     }

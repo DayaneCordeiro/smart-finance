@@ -1,6 +1,6 @@
 package com.example.smartfinance.entrypoint.api.controller.impl;
 
-import com.example.smartfinance.entrypoint.api.dto.ExpenseInputDTO;
+import com.example.smartfinance.entrypoint.api.dto.expense.ExpenseRequestDTO;
 import com.example.smartfinance.entrypoint.api.dto.ExpenseOutputDTO;
 import com.example.smartfinance.entrypoint.api.facade.ExpenseFacade;
 import com.example.smartfinance.factory.RecordFactory;
@@ -43,7 +43,7 @@ public class ExpenseControllerImplTest {
     @Test
     @DisplayName("Should create expense")
     void should_create_expense() {
-        ExpenseInputDTO inputDTO = easyRandom.nextObject(ExpenseInputDTO.class);
+        ExpenseRequestDTO inputDTO = easyRandom.nextObject(ExpenseRequestDTO.class);
         ExpenseOutputDTO outputDTO = easyRandom.nextObject(ExpenseOutputDTO.class);
 
         when(expenseFacade.create(CONSUMER_ID, inputDTO)).thenReturn(outputDTO);

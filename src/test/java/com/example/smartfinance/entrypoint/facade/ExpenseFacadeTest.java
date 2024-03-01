@@ -3,7 +3,7 @@ package com.example.smartfinance.entrypoint.facade;
 import com.example.smartfinance.core.domain.ExpenseDomain;
 import com.example.smartfinance.core.usecase.CreateExpenseUseCase;
 import com.example.smartfinance.core.usecase.GetExpenseUseCase;
-import com.example.smartfinance.entrypoint.api.dto.ExpenseInputDTO;
+import com.example.smartfinance.entrypoint.api.dto.expense.ExpenseRequestDTO;
 import com.example.smartfinance.entrypoint.api.dto.ExpenseOutputDTO;
 import com.example.smartfinance.entrypoint.api.facade.ExpenseFacade;
 import com.example.smartfinance.entrypoint.api.mapper.ExpenseMapper;
@@ -53,7 +53,7 @@ public class ExpenseFacadeTest {
     @Test
     @DisplayName("Should create a expense")
     void should_create_expense() {
-        ExpenseInputDTO inputDTO = easyRandom.nextObject(ExpenseInputDTO.class);
+        ExpenseRequestDTO inputDTO = easyRandom.nextObject(ExpenseRequestDTO.class);
         ExpenseOutputDTO outputDTO = easyRandom.nextObject(ExpenseOutputDTO.class);
         ExpenseDomain expenseDomain = easyRandom.nextObject(ExpenseDomain.class);
 

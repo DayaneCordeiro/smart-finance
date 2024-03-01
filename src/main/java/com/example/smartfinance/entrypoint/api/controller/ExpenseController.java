@@ -1,7 +1,7 @@
 package com.example.smartfinance.entrypoint.api.controller;
 
 import com.example.smartfinance.entrypoint.api.config.ApiDefaultErrorsResponse;
-import com.example.smartfinance.entrypoint.api.dto.ExpenseInputDTO;
+import com.example.smartfinance.entrypoint.api.dto.expense.ExpenseRequestDTO;
 import com.example.smartfinance.entrypoint.api.dto.ExpenseOutputDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -38,7 +38,7 @@ public interface ExpenseController {
     @ResponseStatus(HttpStatus.CREATED)
     ExpenseOutputDTO create(
         @RequestHeader(value = "consumer-id") final String consumerId,
-        @Valid @RequestBody final ExpenseInputDTO expenseInputDTO
+        @Valid @RequestBody final ExpenseRequestDTO expenseRequestDTO
     );
 
     @Operation(summary = "Get expense")
