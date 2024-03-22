@@ -4,7 +4,7 @@ import com.example.smartfinance.core.domain.ExpenseDomain;
 import com.example.smartfinance.core.usecase.CreateExpenseUseCase;
 import com.example.smartfinance.core.usecase.GetExpenseUseCase;
 import com.example.smartfinance.entrypoint.api.dto.expense.ExpenseRequestDTO;
-import com.example.smartfinance.entrypoint.api.dto.ExpenseOutputDTO;
+import com.example.smartfinance.entrypoint.api.dto.expense.ExpenseResponseDTO;
 import com.example.smartfinance.entrypoint.api.facade.ExpenseFacade;
 import com.example.smartfinance.entrypoint.api.mapper.ExpenseMapper;
 import com.example.smartfinance.factory.RecordFactory;
@@ -54,14 +54,14 @@ public class ExpenseFacadeTest {
     @DisplayName("Should create a expense")
     void should_create_expense() {
         ExpenseRequestDTO inputDTO = easyRandom.nextObject(ExpenseRequestDTO.class);
-        ExpenseOutputDTO outputDTO = easyRandom.nextObject(ExpenseOutputDTO.class);
+        ExpenseResponseDTO outputDTO = easyRandom.nextObject(ExpenseResponseDTO.class);
         ExpenseDomain expenseDomain = easyRandom.nextObject(ExpenseDomain.class);
 
         when(expenseMapper.toDomain(CONSUMER_ID, inputDTO)).thenReturn(expenseDomain);
         when(expenseMapper.toDTO(expenseDomain)).thenReturn(outputDTO);
         when(createExpenseUseCase.create(expenseDomain)).thenReturn(expenseDomain);
 
-        ExpenseOutputDTO response = expenseFacade.create(CONSUMER_ID, inputDTO);
+        ExpenseResponseDTO response = expenseFacade.create(CONSUMER_ID, inputDTO);
 
         assertEquals(response, outputDTO);
         verify(createExpenseUseCase, only()).create(expenseDomain);
@@ -71,13 +71,13 @@ public class ExpenseFacadeTest {
     @DisplayName("Should get a expense")
     void should_get_expense() {
         ExpenseDomain expenseDomain = easyRandom.nextObject(ExpenseDomain.class);
-        ExpenseOutputDTO outputDTO = easyRandom.nextObject(ExpenseOutputDTO.class);
+        ExpenseResponseDTO outputDTO = easyRandom.nextObject(ExpenseResponseDTO.class);
 
         when(expenseMapper.toDomain(CONSUMER_ID, ID)).thenReturn(expenseDomain);
         when(expenseMapper.toDTO(expenseDomain)).thenReturn(outputDTO);
         when(getExpenseUseCase.get(expenseDomain)).thenReturn(expenseDomain);
 
-        ExpenseOutputDTO response = expenseFacade.get(CONSUMER_ID, ID);
+        ExpenseResponseDTO response = expenseFacade.get(CONSUMER_ID, ID);
 
         assertEquals(response, outputDTO);
         verify(getExpenseUseCase, only()).get(expenseDomain);

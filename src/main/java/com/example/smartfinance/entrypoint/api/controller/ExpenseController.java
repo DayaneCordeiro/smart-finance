@@ -2,7 +2,7 @@ package com.example.smartfinance.entrypoint.api.controller;
 
 import com.example.smartfinance.entrypoint.api.config.ApiDefaultErrorsResponse;
 import com.example.smartfinance.entrypoint.api.dto.expense.ExpenseRequestDTO;
-import com.example.smartfinance.entrypoint.api.dto.ExpenseOutputDTO;
+import com.example.smartfinance.entrypoint.api.dto.expense.ExpenseResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -30,13 +30,13 @@ public interface ExpenseController {
     @Parameter(name = "consumer-id", in = HEADER, required = true, description = "consumer-id", example = "1")
     @ApiResponse(responseCode = "201", description = "Expense successful created",
         content = {@Content(mediaType = "application/json",
-            schema = @Schema(implementation = ExpenseOutputDTO.class)
+            schema = @Schema(implementation = ExpenseResponseDTO.class)
         )}
     )
     @ApiDefaultErrorsResponse
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    ExpenseOutputDTO create(
+    ExpenseResponseDTO create(
         @RequestHeader(value = "consumer-id") final String consumerId,
         @Valid @RequestBody final ExpenseRequestDTO expenseRequestDTO
     );
@@ -45,12 +45,12 @@ public interface ExpenseController {
     @Parameter(name = "consumer-id", in = HEADER, required = true, description = "consumer-id", example = "1")
     @ApiResponse(responseCode = "200", description = "Income response",
         content = {@Content(mediaType = "application/json",
-            schema = @Schema(implementation = ExpenseOutputDTO.class)
+            schema = @Schema(implementation = ExpenseResponseDTO.class)
         )}
     )
     @ApiDefaultErrorsResponse
     @GetMapping("/{id}")
-    ExpenseOutputDTO get(
+    ExpenseResponseDTO get(
         @RequestHeader(value = "consumer-id") final String consumerId,
         @PathVariable @NotBlank final String id
     );

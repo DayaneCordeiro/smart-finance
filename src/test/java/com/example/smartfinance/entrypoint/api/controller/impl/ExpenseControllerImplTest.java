@@ -1,7 +1,7 @@
 package com.example.smartfinance.entrypoint.api.controller.impl;
 
 import com.example.smartfinance.entrypoint.api.dto.expense.ExpenseRequestDTO;
-import com.example.smartfinance.entrypoint.api.dto.ExpenseOutputDTO;
+import com.example.smartfinance.entrypoint.api.dto.expense.ExpenseResponseDTO;
 import com.example.smartfinance.entrypoint.api.facade.ExpenseFacade;
 import com.example.smartfinance.factory.RecordFactory;
 import org.jeasy.random.EasyRandom;
@@ -44,11 +44,11 @@ public class ExpenseControllerImplTest {
     @DisplayName("Should create expense")
     void should_create_expense() {
         ExpenseRequestDTO inputDTO = easyRandom.nextObject(ExpenseRequestDTO.class);
-        ExpenseOutputDTO outputDTO = easyRandom.nextObject(ExpenseOutputDTO.class);
+        ExpenseResponseDTO outputDTO = easyRandom.nextObject(ExpenseResponseDTO.class);
 
         when(expenseFacade.create(CONSUMER_ID, inputDTO)).thenReturn(outputDTO);
 
-        ExpenseOutputDTO response = expenseController.create(CONSUMER_ID, inputDTO);
+        ExpenseResponseDTO response = expenseController.create(CONSUMER_ID, inputDTO);
 
         assertEquals(response, outputDTO);
         verify(expenseFacade, only()).create(CONSUMER_ID, inputDTO);
@@ -57,11 +57,11 @@ public class ExpenseControllerImplTest {
     @Test
     @DisplayName("Should get expense by id")
     void should_get_expense() {
-        ExpenseOutputDTO outputDTO = easyRandom.nextObject(ExpenseOutputDTO.class);
+        ExpenseResponseDTO outputDTO = easyRandom.nextObject(ExpenseResponseDTO.class);
 
         when(expenseFacade.get(CONSUMER_ID, ID)).thenReturn(outputDTO);
 
-        ExpenseOutputDTO response = expenseController.get(CONSUMER_ID, ID);
+        ExpenseResponseDTO response = expenseController.get(CONSUMER_ID, ID);
 
         assertEquals(response, outputDTO);
         verify(expenseFacade, only()).get(CONSUMER_ID, ID);
