@@ -7,6 +7,8 @@ import com.example.smartfinance.entrypoint.api.facade.ExpenseFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class ExpenseControllerImpl implements ExpenseController {
@@ -21,5 +23,10 @@ public class ExpenseControllerImpl implements ExpenseController {
     @Override
     public ExpenseResponseDTO get(String consumerId, String id) {
         return expenseFacade.get(consumerId, id);
+    }
+
+    @Override
+    public List<ExpenseResponseDTO> getAll() {
+        return expenseFacade.getAll();
     }
 }

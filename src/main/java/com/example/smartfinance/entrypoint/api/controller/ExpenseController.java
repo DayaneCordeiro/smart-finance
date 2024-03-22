@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
+
+import java.util.List;
 
 import static io.swagger.v3.oas.annotations.enums.ParameterIn.HEADER;
 
@@ -53,5 +56,19 @@ public interface ExpenseController {
     ExpenseResponseDTO get(
         @RequestHeader(value = "consumer-id") final String consumerId,
         @PathVariable @NotBlank final String id
+    );
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @Operation(summary = "Get All expenses")
+    //@Parameter(name = "consumer-id", in = HEADER, required = true, description = "consumer-id", example = "1")
+    @ApiResponse(responseCode = "200", description = "Income response",
+            content = {@Content(mediaType = "application/json",
+                    schema = @Schema(implementation = ExpenseResponseDTO.class)
+            )}
+    )
+    @ApiDefaultErrorsResponse
+    @GetMapping
+    List<ExpenseResponseDTO> getAll(
+            //@RequestHeader(value = "consumer-id") final String consumerId,
     );
 }

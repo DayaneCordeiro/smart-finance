@@ -9,6 +9,8 @@ import com.example.smartfinance.dataprovider.database.repository.ExpenseReposito
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @RequiredArgsConstructor
 public class ExpenseGatewayImpl implements ExpenseGateway {
@@ -29,5 +31,10 @@ public class ExpenseGatewayImpl implements ExpenseGateway {
         return expenseRepository.getByIdAndConsumerId(expenseDomain.id(), expenseDomain.consumerId())
                 .map(entityMapper::toDomain)
                 .orElseThrow(() -> new ConsumerExpenseNotFoundException(expenseDomain.id(), expenseDomain.consumerId()));
+    }
+
+    @Override
+    public List<ExpenseDomain> getAll() {
+        return expenseRepository.findAll().stream().map(entityMapper::toDomain).toList();
     }
 }
